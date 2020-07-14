@@ -230,8 +230,8 @@
 <p>环境配置：<br>python 3.6.5<br>tensorflow1.15.0<br>tensorflow-gpu1.4.0<br>cuda8.0<br>cudnn6.0.21</p>
 </blockquote>
 <h5 id="1-数据集制作"><a href="#1-数据集制作" class="headerlink" title="1.数据集制作"></a>1.数据集制作</h5><p>制作voc_2007数据集,首先爬取大量佩戴安全帽和未佩戴图片，对图片数据进行清理，批量重命名修改文件类型，存放到VOC2007\JPEGImages文件夹下，使用labelImg软件对图片进行标注，正标签为hat，负标签为person，标注好的xml文件存放到VOC2007\Annotations文件夹中。  </p>
-<h5 id="2-生成索引"><a href="#2-生成索引" class="headerlink" title="2.生成索引"></a>2.生成索引</h5><p>运行convert_to_txt.py生成索引文件存放在VOC2007\ImageSets\Main中。<br>修改voc_annotation.py文件，将classes的内容改成自己要训练的对象<br><img src="https://github.com/aoxianglee/img-storage/blob/master/sy.PNG" alt="image"><br>运行代码后，生成三个文件”2007_test.txt”, “2007_train.txt”, “2007_val.txt”，去掉前缀”2007_”，得到三个训练索引文件 </p>
-<h5 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h5><p> 修改配置文件model_data 文件夹中的coco_classes.txt和voc_classes.txt，将里面的对象改成自己要训练的对象。<br> <img src="https://github.com/aoxianglee/img-storage/blob/master/pz.png" alt="image">     </p>
+<h5 id="2-生成索引"><a href="#2-生成索引" class="headerlink" title="2.生成索引"></a>2.生成索引</h5><p>运行convert_to_txt.py生成索引文件存放在VOC2007\ImageSets\Main中。<br>修改voc_annotation.py文件，将classes的内容改成自己要训练的对象<br><img src="/images/sy.PNG" alt=""><br>运行代码后，生成三个文件”2007_test.txt”, “2007_train.txt”, “2007_val.txt”，去掉前缀”2007_”，得到三个训练索引文件 </p>
+<h5 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h5><p> 修改配置文件model_data 文件夹中的coco_classes.txt和voc_classes.txt，将里面的对象改成自己要训练的对象。<br> <img src="/images/pz.png" alt="">     </p>
 <h5 id="4-训练模型"><a href="#4-训练模型" class="headerlink" title="4.训练模型"></a>4.训练模型</h5><p> 将model_data文件夹中的yolo.h5复制，改名为yolo_weights.h5，将其作为预训练权重。 </p>
 <blockquote>
 <p>注：对于预训练权重，其实是迁移学习的方法，有些博文其实让修改yolo3.cfg文件，然后重新生成权重文件，但是发现这样的做法最后训练时会出现val_loss:nan的情况，所以建议直接用原来官方的权重文件yolo.h5。还有一些博文修改了原来train.py的训练代码，不预加载训练权重，重头开始训练，这种适合样本数量大的数据集，否则训练结果会不稳定。   </p>
@@ -246,7 +246,7 @@
 <li>摄像头检测 修改yolo.py 将vid = cv2.VideoCapture(video_path)注释掉，运行yolo_video.py</li>
 </ul>
 <hr>
-<h5 id="检测效果"><a href="#检测效果" class="headerlink" title="检测效果"></a>检测效果</h5><p> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg1.jpg" alt="image"><br> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg2.jpg" alt="image"><br> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg3.jpg" alt="image"> </p>
+<h5 id="检测效果"><a href="#检测效果" class="headerlink" title="检测效果"></a>检测效果</h5><p> <img src="/images/jg1.jpg" alt=""><br> <img src="/images/jg2.jpg" alt=""><br> <img src="/images/jg3.jpg" alt=""> </p>
 
     
 
