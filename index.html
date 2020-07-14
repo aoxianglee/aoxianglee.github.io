@@ -196,7 +196,7 @@
             
 
   
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-基于YOLOv3的安全帽识别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -204,7 +204,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2020/07/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" target="_blank">我的第一篇博客</a>
+	  <a class="article-title" href="/2020/07/14/%E5%9F%BA%E4%BA%8EYOLOv3%E7%9A%84%E5%AE%89%E5%85%A8%E5%B8%BD%E8%AF%86%E5%88%AB/" target="_blank">基于YOLOv3的安全帽识别</a>
   
     </h1>
   
@@ -212,8 +212,8 @@
 
   
   
-<a href="/2020/07/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-        <time datetime="2020-07-14T00:50:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
+<a href="/2020/07/14/%E5%9F%BA%E4%BA%8EYOLOv3%E7%9A%84%E5%AE%89%E5%85%A8%E5%B8%BD%E8%AF%86%E5%88%AB/" class="archive-article-date">
+        <time datetime="2020-07-14T06:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
 </a>
 
   
@@ -225,17 +225,28 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul>
-<li>内容</li>
+    <h4 id="基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试"><a href="#基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试" class="headerlink" title="基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试"></a>基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试</h4><p>点击下载<a href="https://github.com/qqwweee/keras-yolo3" target="_blank" rel="noopener">keras—yolov3源代码</a><br>点击下载<a href="https://pjreddie.com/media/files/yolov3.weights" target="_blank" rel="noopener">yolov3.weights权重文件</a></p>
+<blockquote>
+<p>环境配置：<br>python 3.6.5<br>tensorflow1.15.0<br>tensorflow-gpu1.4.0<br>cuda8.0<br>cudnn6.0.21</p>
+</blockquote>
+<h5 id="1-数据集制作"><a href="#1-数据集制作" class="headerlink" title="1.数据集制作"></a>1.数据集制作</h5><p>制作voc_2007数据集,首先爬取大量佩戴安全帽和未佩戴图片，对图片数据进行清理，批量重命名修改文件类型，存放到VOC2007\JPEGImages文件夹下，使用labelImg软件对图片进行标注，正标签为hat，负标签为person，标注好的xml文件存放到VOC2007\Annotations文件夹中。  </p>
+<h5 id="2-生成索引"><a href="#2-生成索引" class="headerlink" title="2.生成索引"></a>2.生成索引</h5><p>运行convert_to_txt.py生成索引文件存放在VOC2007\ImageSets\Main中。<br>修改voc_annotation.py文件，将classes的内容改成自己要训练的对象<br><img src="https://github.com/aoxianglee/img-storage/blob/master/sy.PNG" alt="image"><br>运行代码后，生成三个文件”2007_test.txt”, “2007_train.txt”, “2007_val.txt”，去掉前缀”2007_”，得到三个训练索引文件 </p>
+<h5 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h5><p> 修改配置文件model_data 文件夹中的coco_classes.txt和voc_classes.txt，将里面的对象改成自己要训练的对象。<br> <img src="https://github.com/aoxianglee/img-storage/blob/master/pz.png" alt="image">     </p>
+<h5 id="4-训练模型"><a href="#4-训练模型" class="headerlink" title="4.训练模型"></a>4.训练模型</h5><p> 将model_data文件夹中的yolo.h5复制，改名为yolo_weights.h5，将其作为预训练权重。 </p>
+<blockquote>
+<p>注：对于预训练权重，其实是迁移学习的方法，有些博文其实让修改yolo3.cfg文件，然后重新生成权重文件，但是发现这样的做法最后训练时会出现val_loss:nan的情况，所以建议直接用原来官方的权重文件yolo.h5。还有一些博文修改了原来train.py的训练代码，不预加载训练权重，重头开始训练，这种适合样本数量大的数据集，否则训练结果会不稳定。   </p>
+</blockquote>
+<h5 id="5-执行训练"><a href="#5-执行训练" class="headerlink" title="5.执行训练"></a>5.执行训练</h5><p> 将model_data文件夹中yolo_.h5复制，重命名为yolo_weights.h5作为预训练模型。 修改epochs，batch_size等参数，运行train.py文件。</p>
+<blockquote>
+<p>注:<code>import os    #os.environ[&#39;CUDA_VISIBLE_DEVICES&#39;] = &#39;-1&#39; #</code> 这一行注释掉就是使用gpu，不注释就是使用cpu    </p>
+</blockquote>
+<h5 id="6-模型检测"><a href="#6-模型检测" class="headerlink" title="6.模型检测"></a>6.模型检测</h5><ul>
+<li>单个图片/视频：命令行运行yolo_video.py   </li>
+<li>批量图片 修改yolo.py 将vid = cv2.VideoCapture(0) 注释掉，运行 yolo_video.py  </li>
+<li>摄像头检测 修改yolo.py 将vid = cv2.VideoCapture(video_path)注释掉，运行yolo_video.py</li>
 </ul>
 <hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><ul>
-<li>内容二</li>
-</ul>
-<hr>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><ul>
-<li>内容三</li>
-</ul>
+<h5 id="检测效果"><a href="#检测效果" class="headerlink" title="检测效果"></a>检测效果</h5><p> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg1.jpg" alt="image"><br> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg2.jpg" alt="image"><br> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg3.jpg" alt="image"> </p>
 
     
 
@@ -251,94 +262,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2020/07/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/07/14/hello-world/" target="_blank">Hello World</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/07/14/hello-world/" class="archive-article-date">
-        <time datetime="2020-07-14T00:37:24.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/07/14/hello-world/">展开全文 >></a>
+      <a class="article-more-a" href="/2020/07/14/%E5%9F%BA%E4%BA%8EYOLOv3%E7%9A%84%E5%AE%89%E5%85%A8%E5%B8%BD%E8%AF%86%E5%88%AB/">展开全文 >></a>
     </p>
     
 

@@ -6,21 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客 | 点滴</title>
+  <title>基于YOLOv3的安全帽识别 | 点滴</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="第一章 内容   第二章 内容二   第三章 内容三">
+  <meta name="description" content="基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试点击下载keras—yolov3源代码点击下载yolov3.weights权重文件  环境配置：python 3.6.5tensorflow1.15.0tensorflow-gpu1.4.0cuda8.0cudnn6.0.21  1.数据集制作制作voc_2007数据集,首先爬取大量佩戴安全帽和未佩戴图片，对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2020/07/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="基于YOLOv3的安全帽识别">
+<meta property="og:url" content="http://yoursite.com/2020/07/14/%E5%9F%BA%E4%BA%8EYOLOv3%E7%9A%84%E5%AE%89%E5%85%A8%E5%B8%BD%E8%AF%86%E5%88%AB/index.html">
 <meta property="og:site_name" content="点滴">
-<meta property="og:description" content="第一章 内容   第二章 内容二   第三章 内容三">
+<meta property="og:description" content="基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试点击下载keras—yolov3源代码点击下载yolov3.weights权重文件  环境配置：python 3.6.5tensorflow1.15.0tensorflow-gpu1.4.0cuda8.0cudnn6.0.21  1.数据集制作制作voc_2007数据集,首先爬取大量佩戴安全帽和未佩戴图片，对">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-14T00:50:55.000Z">
-<meta property="article:modified_time" content="2020-07-14T01:08:10.263Z">
+<meta property="og:image" content="https://github.com/aoxianglee/img-storage/blob/master/sy.PNG">
+<meta property="og:image" content="https://github.com/aoxianglee/img-storage/blob/master/pz.png">
+<meta property="og:image" content="https://github.com/aoxianglee/img-storage/blob/master/jg1.jpg">
+<meta property="og:image" content="https://github.com/aoxianglee/img-storage/blob/master/jg2.jpg">
+<meta property="og:image" content="https://github.com/aoxianglee/img-storage/blob/master/jg3.jpg">
+<meta property="article:published_time" content="2020-07-14T06:11:23.000Z">
+<meta property="article:modified_time" content="2020-07-14T06:23:28.606Z">
 <meta property="article:author" content="AoXiangLee">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/aoxianglee/img-storage/blob/master/sy.PNG">
   
     <link rel="alternative" href="/atom.xml" title="点滴" type="application/atom+xml">
   
@@ -191,14 +197,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-基于YOLOv3的安全帽识别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      基于YOLOv3的安全帽识别
     </h1>
   
 
@@ -210,8 +216,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/07/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-        <time datetime="2020-07-14T00:50:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
+<a href="/2020/07/14/%E5%9F%BA%E4%BA%8EYOLOv3%E7%9A%84%E5%AE%89%E5%85%A8%E5%B8%BD%E8%AF%86%E5%88%AB/" class="archive-article-date">
+        <time datetime="2020-07-14T06:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
 </a>
 
   
@@ -224,7 +230,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">17字</span>
+      <span class="post-count">563字</span>
     </span>
   </span>
 
@@ -233,7 +239,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -244,17 +250,28 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul>
-<li>内容</li>
+    <h4 id="基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试"><a href="#基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试" class="headerlink" title="基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试"></a>基于python，tensorflow框架，以yolov3模型训练自己的安全帽数据集并测试</h4><p>点击下载<a href="https://github.com/qqwweee/keras-yolo3" target="_blank" rel="noopener">keras—yolov3源代码</a><br>点击下载<a href="https://pjreddie.com/media/files/yolov3.weights" target="_blank" rel="noopener">yolov3.weights权重文件</a></p>
+<blockquote>
+<p>环境配置：<br>python 3.6.5<br>tensorflow1.15.0<br>tensorflow-gpu1.4.0<br>cuda8.0<br>cudnn6.0.21</p>
+</blockquote>
+<h5 id="1-数据集制作"><a href="#1-数据集制作" class="headerlink" title="1.数据集制作"></a>1.数据集制作</h5><p>制作voc_2007数据集,首先爬取大量佩戴安全帽和未佩戴图片，对图片数据进行清理，批量重命名修改文件类型，存放到VOC2007\JPEGImages文件夹下，使用labelImg软件对图片进行标注，正标签为hat，负标签为person，标注好的xml文件存放到VOC2007\Annotations文件夹中。  </p>
+<h5 id="2-生成索引"><a href="#2-生成索引" class="headerlink" title="2.生成索引"></a>2.生成索引</h5><p>运行convert_to_txt.py生成索引文件存放在VOC2007\ImageSets\Main中。<br>修改voc_annotation.py文件，将classes的内容改成自己要训练的对象<br><img src="https://github.com/aoxianglee/img-storage/blob/master/sy.PNG" alt="image"><br>运行代码后，生成三个文件”2007_test.txt”, “2007_train.txt”, “2007_val.txt”，去掉前缀”2007_”，得到三个训练索引文件 </p>
+<h5 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h5><p> 修改配置文件model_data 文件夹中的coco_classes.txt和voc_classes.txt，将里面的对象改成自己要训练的对象。<br> <img src="https://github.com/aoxianglee/img-storage/blob/master/pz.png" alt="image">     </p>
+<h5 id="4-训练模型"><a href="#4-训练模型" class="headerlink" title="4.训练模型"></a>4.训练模型</h5><p> 将model_data文件夹中的yolo.h5复制，改名为yolo_weights.h5，将其作为预训练权重。 </p>
+<blockquote>
+<p>注：对于预训练权重，其实是迁移学习的方法，有些博文其实让修改yolo3.cfg文件，然后重新生成权重文件，但是发现这样的做法最后训练时会出现val_loss:nan的情况，所以建议直接用原来官方的权重文件yolo.h5。还有一些博文修改了原来train.py的训练代码，不预加载训练权重，重头开始训练，这种适合样本数量大的数据集，否则训练结果会不稳定。   </p>
+</blockquote>
+<h5 id="5-执行训练"><a href="#5-执行训练" class="headerlink" title="5.执行训练"></a>5.执行训练</h5><p> 将model_data文件夹中yolo_.h5复制，重命名为yolo_weights.h5作为预训练模型。 修改epochs，batch_size等参数，运行train.py文件。</p>
+<blockquote>
+<p>注:<code>import os    #os.environ[&#39;CUDA_VISIBLE_DEVICES&#39;] = &#39;-1&#39; #</code> 这一行注释掉就是使用gpu，不注释就是使用cpu    </p>
+</blockquote>
+<h5 id="6-模型检测"><a href="#6-模型检测" class="headerlink" title="6.模型检测"></a>6.模型检测</h5><ul>
+<li>单个图片/视频：命令行运行yolo_video.py   </li>
+<li>批量图片 修改yolo.py 将vid = cv2.VideoCapture(0) 注释掉，运行 yolo_video.py  </li>
+<li>摄像头检测 修改yolo.py 将vid = cv2.VideoCapture(video_path)注释掉，运行yolo_video.py</li>
 </ul>
 <hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><ul>
-<li>内容二</li>
-</ul>
-<hr>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><ul>
-<li>内容三</li>
-</ul>
+<h5 id="检测效果"><a href="#检测效果" class="headerlink" title="检测效果"></a>检测效果</h5><p> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg1.jpg" alt="image"><br> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg2.jpg" alt="image"><br> <img src="https://github.com/aoxianglee/img-storage/blob/master/jg3.jpg" alt="image"> </p>
 
     
 
@@ -301,7 +318,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/07/14/我的第一篇博客/" title="我的第一篇博客" target="_blank">http://yoursite.com/2020/07/14/我的第一篇博客/</a>
+          <a href="http://yoursite.com/2020/07/14/基于YOLOv3的安全帽识别/" title="基于YOLOv3的安全帽识别" target="_blank">http://yoursite.com/2020/07/14/基于YOLOv3的安全帽识别/</a>
         </li>
         
         <li>
@@ -368,7 +385,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/14/%E5%9F%BA%E4%BA%8EYOLOv3%E7%9A%84%E5%AE%89%E5%85%A8%E5%B8%BD%E8%AF%86%E5%88%AB/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -380,16 +397,6 @@
   </div>
 </article>
 
-
-<nav id="article-nav">
-  
-  
-    <a href="/2020/07/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
 
 
 <aside class="wrap-side-operation">
